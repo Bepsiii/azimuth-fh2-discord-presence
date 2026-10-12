@@ -1,7 +1,7 @@
 # Building and testing
 
 Use Python 3.10 or later and Zig 0.15.2. Run these commands from this source
-folder. Builds target x86_64 Windows PE DLLs and use only Zig's bundled Windows
+folder (run `cd source` from the repository root). Builds target x86_64 Windows PE DLLs and use only Zig's bundled Windows
 headers and Kernel32 import library. No Microsoft C runtime, Xbox SDK, original
 helper DLL, or translation-layer source is required.
 

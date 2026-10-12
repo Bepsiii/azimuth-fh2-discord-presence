@@ -103,7 +103,7 @@ Release ABI checks verify x64, only Kernel32 imports, the expected TLS exports
 and the 336-byte, 16-byte-aligned TLS template. Unsupported game headers/file
 hashes and getter signatures are rejected before the presence worker starts.
 The packaged source is rebuilt separately and compared against the release DLL.
-See VALIDATION.md in the release package for results and the remaining live check.
+See [validation.md](validation.md) for results and the remaining live check.
 
 ## Changes since RC1
 
@@ -123,15 +123,15 @@ See VALIDATION.md in the release package for results and the remaining live chec
 
 The accompanying source corresponds to this DLL. Original Extra Options code:
 Arthur / RokkuDayo, https://github.com/RokkuDayo/ForzaHorizon2_ExtraOptions.
-This combined build is distributed under GPL-3.0; see LICENSE. Retain attribution,
+This combined build is distributed under GPL-3.0; see [LICENSE](../LICENSE). Retain attribution,
 the licence and corresponding source when distributing a modified release.
 
-The new presence implementation is in features/discord_presence.c,
-features/presence_json.c, their headers and features/presence_cars.h. Other changes add
+The new presence implementation is in source/features/discord_presence.c,
+source/features/presence_json.c, their headers and source/features/presence_cars.h. Other changes add
 startup integration, freestanding memory/stack helpers, native build/tests and
 presence-only defaults when Extra Options configuration is absent.
 
-Build with Zig 0.15.2:
+Build with Zig 0.15.2, running these commands from the `source` folder:
 
     powershell -NoProfile -ExecutionPolicy Bypass -File build-presence.ps1 -Zig C:\path\to\zig.exe
 

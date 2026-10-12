@@ -32,9 +32,9 @@ jobs:
             base64 --decode > "$asset"
           printf '%s  %s\n' '899d2890d07345e43411ef25a2597f25a0b35fd391d95693233fac1556544bb4' "$asset" |
             sha256sum --check
-          gh api "repos/$GH_REPO/contents/RELEASE-NOTES.md?ref=$GITHUB_SHA" --jq '.content' |
+          gh api "repos/$GH_REPO/contents/docs/release-notes.md?ref=$GITHUB_SHA" --jq '.content' |
             base64 --decode > release-notes.md
-          gh api "repos/$GH_REPO/contents/RELEASE-SHA256.txt?ref=$GITHUB_SHA" --jq '.content' |
+          gh api "repos/$GH_REPO/contents/docs/release-sha256.txt?ref=$GITHUB_SHA" --jq '.content' |
             base64 --decode > RELEASE-SHA256.txt
       - name: Publish the prerelease
         shell: bash

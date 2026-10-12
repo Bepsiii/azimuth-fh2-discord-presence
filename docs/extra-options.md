@@ -1,6 +1,6 @@
 # Forza Horizon 2 - Extra Options
 This source tree is the native Discord Presence fork, based on Extra Options
-0.2.34. See [README-Discord-Presence.md](README-Discord-Presence.md) for this
+0.2.34. See [presence.md](presence.md) for this
 release's installation, changes, build steps and validation status. The upstream
 feature documentation follows; presence support targets the Azimuth adapter.
 

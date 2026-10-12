@@ -1,7 +1,7 @@
 # Local build/test outputs and compiler distributions
-/build/
-/build-test/
-/toolchain/
+build/
+build-test/
+toolchain/
 *.obj
 *.lib
 *.pdb

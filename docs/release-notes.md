@@ -15,7 +15,7 @@ It also corrects manufacturer labels and improves source and build organisation.
 
 Automated native, mock-IPC, worker-loop, configuration and binary checks pass.
 The bundled source reproduces the release DLL. RC2 still needs its own live game
-verification; other wrapper/game versions are unverified. See VALIDATION.md.
+verification; other wrapper/game versions are unverified. See [validation.md](validation.md).
 
 The release ZIP contains the DLL, optional INI, instructions, licence, source,
 tests and checksums. It is distributed under GPL-3.0, retaining attribution to
