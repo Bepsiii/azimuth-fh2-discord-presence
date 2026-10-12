@@ -1,5 +1,7 @@
 # Azimuth FH2 Native Discord Presence - 0.1.0-rc2
 
+[Download RC2](https://github.com/Bepsiii/azimuth-fh2-discord-presence/releases/tag/v0.1.0-rc2)
+
 This native x64 DLL adds automatic Discord Rich Presence to Azimuth 0.9.7 with
 Forza Horizon 2 Xbox One build 1.0.0.64. It is built from the Extra Options
 0.2.34 source and preserves its existing configurable features.

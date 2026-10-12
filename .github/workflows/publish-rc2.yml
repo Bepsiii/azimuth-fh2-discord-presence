@@ -1,0 +1,51 @@
+name: Publish RC2 prerelease
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-rc2.yml'
+      - 'releases/Azimuth-FH2-Native-Presence-0.1.0-rc2.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-rc2
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Fetch and verify the reviewed release
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset='Azimuth-FH2-Native-Presence-0.1.0-rc2.zip'
+          gh api "repos/$GH_REPO/contents/releases/$asset?ref=$GITHUB_SHA" --jq '.content' |
+            base64 --decode > "$asset"
+          printf '%s  %s\n' '899d2890d07345e43411ef25a2597f25a0b35fd391d95693233fac1556544bb4' "$asset" |
+            sha256sum --check
+          gh api "repos/$GH_REPO/contents/RELEASE-NOTES.md?ref=$GITHUB_SHA" --jq '.content' |
+            base64 --decode > release-notes.md
+          gh api "repos/$GH_REPO/contents/RELEASE-SHA256.txt?ref=$GITHUB_SHA" --jq '.content' |
+            base64 --decode > RELEASE-SHA256.txt
+      - name: Publish the prerelease
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset='Azimuth-FH2-Native-Presence-0.1.0-rc2.zip'
+          if gh release view v0.1.0-rc2 --repo "$GH_REPO" >/dev/null 2>&1; then
+            echo 'RC2 already exists; preserving the existing release and assets.'
+            exit 0
+          fi
+          gh release create v0.1.0-rc2 "$asset" RELEASE-SHA256.txt \
+            --repo "$GH_REPO" --target "$GITHUB_SHA" \
+            --title 'Azimuth FH2 Discord Rich Presence 0.1.0 RC2' \
+            --notes-file release-notes.md --prerelease

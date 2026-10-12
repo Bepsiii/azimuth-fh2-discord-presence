@@ -17,3 +17,7 @@ __pycache__/
 .vscode/
 *.bak
 *.backup
+
+# Reviewed release ZIP intentionally tracked for prerelease publication
+!/releases/
+!/releases/*.zip
