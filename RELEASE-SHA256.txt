@@ -1,0 +1,2 @@
+bcdcd05589962d198382dbf94ffb4e862ab702e2205eb78cb64d60c32cfa2fa8  azimuth-tls.dll
+899d2890d07345e43411ef25a2597f25a0b35fd391d95693233fac1556544bb4  Azimuth-FH2-Native-Presence-0.1.0-rc2.zip

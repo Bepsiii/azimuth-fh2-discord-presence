@@ -1,0 +1,19 @@
+# Local build/test outputs and compiler distributions
+/build/
+/build-test/
+/toolchain/
+*.obj
+*.lib
+*.pdb
+*.dll
+*.exe
+*.zip
+*.log
+__pycache__/
+*.pyc
+
+# Local editor files
+.vs/
+.vscode/
+*.bak
+*.backup
