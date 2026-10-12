@@ -5,13 +5,24 @@ car, activity, paused status, approximate location and elapsed session time.
 
 **Supported target:** Azimuth 0.9.7 with FH2 Xbox One build 1.0.0.64.
 
+## Requirements
+
+- Azimuth 0.9.7 and FH2 Xbox One build 1.0.0.64.
+- **[Extra Options 0.2.34](https://github.com/RokkuDayo/ForzaHorizon2_ExtraOptions), installed first.**
+- Discord's desktop app with activity sharing enabled.
+
+Extra Options is the prerequisite for the recommended, supported installation.
+This release includes its code, so the presence DLL replaces the Extra Options
+DLL. Keep the original mod's configuration and gamerpic.
+
 ## Download and install
 
 [Download the RC2 release](https://github.com/Bepsiii/azimuth-fh2-discord-presence/releases/tag/v0.1.0-rc2).
 
-1. Close Azimuth and stop any PowerShell presence companion.
-2. Extract the release ZIP and back up the existing `data/bin/azimuth-tls.dll`.
-3. Copy the supplied `azimuth-tls.dll` into `data/bin`, then launch the game
+1. Install Extra Options 0.2.34 using the upstream mod's instructions.
+2. Close Azimuth and stop any PowerShell presence companion.
+3. Extract the release ZIP and back up the existing `data/bin/azimuth-tls.dll`.
+4. Copy the supplied `azimuth-tls.dll` into `data/bin`, then launch the game
    with Discord's desktop app open.
 
 Keep the existing `FH2_ExtraOptions.ini` and `Gamerpic.png`. The optional

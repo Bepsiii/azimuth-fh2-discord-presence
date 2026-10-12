@@ -4,14 +4,25 @@ This native x64 DLL adds automatic Discord Rich Presence to Azimuth 0.9.7 with
 Forza Horizon 2 Xbox One build 1.0.0.64. It is built from the Extra Options
 0.2.34 source and preserves its existing configurable features.
 
+## Requirements
+
+**Install [Extra Options 0.2.34](https://github.com/RokkuDayo/ForzaHorizon2_ExtraOptions) before this mod.**
+It is the prerequisite for the recommended, supported setup, alongside Azimuth
+0.9.7, FH2 Xbox One build 1.0.0.64 and Discord's desktop app.
+
+The supplied presence DLL includes the Extra Options integration and replaces
+its `azimuth-tls.dll`. Preserve the upstream mod's `FH2_ExtraOptions.ini` and
+`Gamerpic.png`; do not try to load a second Extra Options DLL alongside it.
+
 ## Install
 
-1. Close Azimuth and stop any PowerShell Rich Presence companion. Running both
+1. Install Extra Options 0.2.34 following the upstream mod's instructions.
+2. Close Azimuth and stop any PowerShell Rich Presence companion. Running both
    integrations can cause competing activity updates.
-2. Open the launcher's **data/bin** folder.
-3. Back up its existing **azimuth-tls.dll**, for example as **azimuth-tls.dll.backup**.
-4. Copy the supplied **azimuth-tls.dll** into that folder.
-5. Launch Azimuth with Discord's desktop app open. Allow up to 15 seconds after
+3. Open the launcher's **data/bin** folder.
+4. Back up its existing **azimuth-tls.dll**, for example as **azimuth-tls.dll.backup**.
+5. Copy the supplied **azimuth-tls.dll** into that folder.
+6. Launch Azimuth with Discord's desktop app open. Allow up to 15 seconds after
    loading into gameplay for the presence to appear.
 
 No external runtime, helper executable, user token, Developer Portal setup or
@@ -22,9 +33,10 @@ The optional **FH2_DiscordPresence.ini** can also be copied beside the DLL. It i
 not needed for the default settings. Restart the game after changing it.
 
 **Keep your existing FH2_ExtraOptions.ini and Gamerpic.png.** This package does
-not overwrite those files. If no Extra Options INI exists, gameplay tweaks are
-disabled; the DLL operates as a presence-only helper. To enable Extra Options
-features, use a supported 0.2.34 INI with Global/Enabled=1.
+not overwrite those files. Installing Extra Options first is the supported
+installation route. A missing INI triggers a presence-only fallback with
+gameplay tweaks disabled; that fallback does not replace the recommended setup.
+To enable Extra Options features, use a supported 0.2.34 INI with Global/Enabled=1.
 
 To remove this build, close Azimuth and restore the original DLL.
 

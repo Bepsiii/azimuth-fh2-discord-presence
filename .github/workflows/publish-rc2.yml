@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/publish-rc2.yml'
       - 'releases/Azimuth-FH2-Native-Presence-0.1.0-rc2.zip'
+      - 'docs/release-notes.md'
   workflow_dispatch:
 
 permissions:
@@ -42,7 +43,8 @@ jobs:
           set -euo pipefail
           asset='Azimuth-FH2-Native-Presence-0.1.0-rc2.zip'
           if gh release view v0.1.0-rc2 --repo "$GH_REPO" >/dev/null 2>&1; then
-            echo 'RC2 already exists; preserving the existing release and assets.'
+            gh release edit v0.1.0-rc2 --repo "$GH_REPO" \
+              --notes-file release-notes.md --prerelease
             exit 0
           fi
           gh release create v0.1.0-rc2 "$asset" RELEASE-SHA256.txt \
