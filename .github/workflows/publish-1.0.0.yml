@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/publish-1.0.0.yml'
       - 'releases/FH2-Discord-Presence-1.0.0.zip'
+      - 'docs/release-notes-1.0.0.md'
   workflow_dispatch:
 permissions:
   contents: write
@@ -29,12 +30,12 @@ jobs:
           gh api "repos/$GH_REPO/contents/docs/release-sha256-1.0.0.txt?ref=$GITHUB_SHA" --jq '.content' | base64 --decode > RELEASE-SHA256.txt
           sha256sum --check RELEASE-SHA256.txt
           gh api "repos/$GH_REPO/contents/docs/release-notes-1.0.0.md?ref=$GITHUB_SHA" --jq '.content' | base64 --decode > notes.md
-      - name: Publish tested prerelease
+      - name: Publish stable release
         shell: bash
         run: |
           set -euo pipefail
           if gh release view v1.0.0 --repo "$GH_REPO" >/dev/null 2>&1; then
-            echo 'Version 1.0.0 already exists; preserving its assets.'
+            gh release edit v1.0.0 --repo "$GH_REPO" --title 'FH2 Discord Presence 1.0.0' --notes-file notes.md --prerelease=false --latest
             exit 0
           fi
-          gh release create v1.0.0 FH2-Discord-Presence-1.0.0.zip FH2-Discord-Presence-1.0.0-Source.zip RELEASE-SHA256.txt --repo "$GH_REPO" --target "$GITHUB_SHA" --title 'FH2 Discord Presence 1.0.0' --notes-file notes.md --prerelease
+          gh release create v1.0.0 FH2-Discord-Presence-1.0.0.zip FH2-Discord-Presence-1.0.0-Source.zip RELEASE-SHA256.txt --repo "$GH_REPO" --target "$GITHUB_SHA" --title 'FH2 Discord Presence 1.0.0' --notes-file notes.md --latest

@@ -22,11 +22,11 @@ Discord must be running locally. The application ID is public and provides no ac
 
 ## Validation
 
-Automated checks cover bounded JSON and IPC, fragmented messages, reconnects, rate limits, car/player selection, paused/race states, invalid configuration, native DLL loading, TLS compatibility and coexistence with the separate Extra Options module. The 1.0.0 release is marked prerelease pending an in-game check of the standalone package.
+Automated checks cover bounded JSON and IPC, fragmented messages, reconnects, rate limits, car/player selection, paused/race states, invalid configuration, native DLL loading, TLS compatibility and coexistence with the separate Extra Options module. The standalone 1.0.0 package was confirmed working in-game with Extra Options on 13 October 2026 and is released as stable.
 
 ## Source and licences
 
-GPL-3.0. [Extra Options by Arthur / RokkuDayo](https://github.com/RokkuDayo/ForzaHorizon2_ExtraOptions) is included as separate source under `third-party/ForzaHorizon2_ExtraOptions`, with its original licence. Presence car labels derive from the game's identifiers; no game binaries or assets are supplied. See `docs/BUILD.md` for building and testing.
+GPL-3.0. [Extra Options by Arthur / RokkuDayo](https://github.com/RokkuDayo/ForzaHorizon2_ExtraOptions) is included as separate source under `third-party/ForzaHorizon2_ExtraOptions`, with its original licence. Presence car labels derive from the game's identifiers; no game binaries or assets are supplied. See [build instructions](docs/BUILD-1.0.0.md) for building and testing.
 
 ## Downloads and repository layout
 

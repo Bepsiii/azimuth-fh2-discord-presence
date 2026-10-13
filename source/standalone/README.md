@@ -22,7 +22,7 @@ Discord must be running locally. The application ID is public and provides no ac
 
 ## Validation
 
-Automated checks cover bounded JSON and IPC, fragmented messages, reconnects, rate limits, car/player selection, paused/race states, invalid configuration, native DLL loading, TLS compatibility and coexistence with the separate Extra Options module. The 1.0.0 release is marked prerelease pending an in-game check of the standalone package.
+Automated checks cover bounded JSON and IPC, fragmented messages, reconnects, rate limits, car/player selection, paused/race states, invalid configuration, native DLL loading, TLS compatibility and coexistence with the separate Extra Options module. The standalone 1.0.0 package was confirmed working in-game with Extra Options on 13 October 2026 and is released as stable.
 
 ## Source and licences
 
