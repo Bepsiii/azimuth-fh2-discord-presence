@@ -1,0 +1,2 @@
+f3102e2ada8e9b007b5a9851d4f5456a41ca10408b84651f44efcf0d8af1c305  FH2-Discord-Presence-1.0.0.zip
+841c637818b65f3188d69b3fb3badd6227c026b8f1a748f19e0a56e1e85fb504  FH2-Discord-Presence-1.0.0-Source.zip

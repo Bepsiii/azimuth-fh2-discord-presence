@@ -1,0 +1,40 @@
+name: Publish presence 1.0.0
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-1.0.0.yml'
+      - 'releases/FH2-Discord-Presence-1.0.0.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-1.0.0
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Fetch and verify packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          for asset in FH2-Discord-Presence-1.0.0.zip FH2-Discord-Presence-1.0.0-Source.zip; do
+            gh api "repos/$GH_REPO/contents/releases/$asset?ref=$GITHUB_SHA" --jq '.content' | base64 --decode > "$asset"
+          done
+          gh api "repos/$GH_REPO/contents/docs/release-sha256-1.0.0.txt?ref=$GITHUB_SHA" --jq '.content' | base64 --decode > RELEASE-SHA256.txt
+          sha256sum --check RELEASE-SHA256.txt
+          gh api "repos/$GH_REPO/contents/docs/release-notes-1.0.0.md?ref=$GITHUB_SHA" --jq '.content' | base64 --decode > notes.md
+      - name: Publish tested prerelease
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v1.0.0 --repo "$GH_REPO" >/dev/null 2>&1; then
+            echo 'Version 1.0.0 already exists; preserving its assets.'
+            exit 0
+          fi
+          gh release create v1.0.0 FH2-Discord-Presence-1.0.0.zip FH2-Discord-Presence-1.0.0-Source.zip RELEASE-SHA256.txt --repo "$GH_REPO" --target "$GITHUB_SHA" --title 'FH2 Discord Presence 1.0.0' --notes-file notes.md --prerelease
